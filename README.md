@@ -29,20 +29,20 @@ module purge
 module load Anaconda3/2023.07-2
 source activate /sw/hprc/sw/Anaconda3/2023.07-2/envs/qiime2-2024.2-amplicon
 
-qiime dada2 denoise-paired --p-n-threads 48 --i-demultiplexed-seqs newtrimmed_Jessup_test_paired-end-demux.qza --o-table newtrimmed_Jessup_test_table --o-representative-sequences newtrimmed_Jessup_test_rep-seqs --p-trim-left-f 0 --p-trim-left-r 0 --p-trunc-len-f 270 --p-trunc-len-r 220 --o-denoising-stats newtrimmed_Jessup_test_denoising_stats.qza
+qiime dada2 denoise-paired --p-n-threads 48 --i-demultiplexed-seqs newtrimmed_test_paired-end-demux.qza --o-table newtrimmed_test_table --o-representative-sequences newtrimmed_test_rep-seqs --p-trim-left-f 0 --p-trim-left-r 0 --p-trunc-len-f 270 --p-trunc-len-r 220 --o-denoising-stats newtrimmed_test_denoising_stats.qza
 
 ```
 **Visualization**
 ```{code_cell}
 qiime feature-table summarize \
-  --i-table newtrimmed_Jessup_test_table.qza \
-  --o-visualization newtrimmed_Jessup_test_table.qzv
+  --i-table newtrimmed_test_table.qza \
+  --o-visualization newtrimmed_test_table.qzv
 qiime feature-table tabulate-seqs \
-  --i-data newtrimmed_Jessup_test_rep-seqs.qza \
-  --o-visualization newtrimmed_Jessup_test_rep-seqs.qzv
+  --i-data newtrimmed_test_rep-seqs.qza \
+  --o-visualization newtrimmed_test_rep-seqs.qzv
 qiime metadata tabulate \
-  --m-input-file newtrimmed_Jessup_test_denoising_stats.qza \
-  --o-visualization newtrimmed_Jessup_test_denoising_stats.qzv
+  --m-input-file newtrimmed_test_denoising_stats.qza \
+  --o-visualization newtrimmed_test_denoising_stats.qzv
 ```
 ## 3. **Filtering** 
 The nubmer of featuers (ASVs) initially obtained from 16S Fall-2023 dataset were 21308 with a total frequency of ~1.8 million reads. 2-3 samples of each dataset had low reads frequency i;e less than 10K.<br>
