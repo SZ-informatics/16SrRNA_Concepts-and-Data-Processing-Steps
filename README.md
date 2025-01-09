@@ -1,4 +1,15 @@
 # 16SrRNA- Concepts and Data Processing Steps 
+
+## Create Manifest file 
+````
+echo "sample-id,absolute-filepath,direction" > manifest.txt
+for file in /scratch/user/zahra/Spring_2024/16S_3rdrun/trimmed_16S2024/*_out.1.fastq.gz; do
+  base=$(basename $file _out.1.fastq.gz)
+  echo "$base,$file,forward" >> manifest.txt
+  echo "$base,${file/_out.1.fastq.gz/_out.2.fastq.gz},reverse" >> manifest.txt
+done
+````
+
 ## 1. **Demultiplexing** (Reverse + Forward reads)
 Raw fastq files are demultiplexed to assign seqeunces to their respective samples.<br>
 ```{code-cell}
